@@ -31,6 +31,17 @@
     Call the playRound function inside this function
 */
 
+// Case-Insensitive Helper
+// Converts the argument into lowercase then capitalizes the first letter
+
+// function caseInsensitive(a) {
+//     let lowerCaseFull = a.toLowerCase();
+//     let capitalFirstLetter = lowerCaseFull.charAt(0).toUpperCase() + lowerCaseFull.slice(1);
+//     return capitalFirstLetter;
+// }
+// TEST OF CASE-INSENSITIVE
+// const playerSelection2 = prompt(`Choose either, Rock, Paper or Scissors to play!`)
+// console.log(caseInsensitive(playerSelection2))
 
 
 
@@ -50,47 +61,53 @@ function getComputerChoice() {
 
 // Game's brains
 // CONSIDER switching below if-else-statement to a switch-statement 
-function playRound(playerSelectionCaseInsensitive, computerSelection) {
+function playRound(playerSelection, computerSelection) {
 
-    if (playerSelectionCaseInsensitive == rock && computerSelection == scissors) {
-        alert(`You Win! ${playerSelectionCaseInsensitive} beats ${computerSelection}`)
+    if (playerSelection == rock && computerSelection == scissors) {
+        alert(`You Win! ${playerSelection} beats ${computerSelection}`)
 
-    } else if (playerSelectionCaseInsensitive == paper && computerSelection == rock) {
-        alert(`You Win! ${playerSelectionCaseInsensitive} beats ${computerSelection}`)
-
-    }
-    else if (playerSelectionCaseInsensitive == scissors && computerSelection == paper) {
-        alert(`You Win! ${playerSelectionCaseInsensitive} beats ${computerSelection}`)
+    } else if (playerSelection == paper && computerSelection == rock) {
+        alert(`You Win! ${playerSelection} beats ${computerSelection}`)
 
     }
-    else if (playerSelectionCaseInsensitive == computerSelection) {
-        alert(`You Draw! ${computerSelection} and ${playerSelectionCaseInsensitive} are the same!`)
+    else if (playerSelection == scissors && computerSelection == paper) {
+        alert(`You Win! ${playerSelection} beats ${computerSelection}`)
+
+    }
+    else if (playerSelection == computerSelection) {
+        alert(`You Draw! ${computerSelection} and ${playerSelection} are the same!`)
     }
     else {
-        alert(`You Lose! ${computerSelection} beats ${playerSelectionCaseInsensitive}`)
+        alert(`You Lose! ${computerSelection} beats ${playerSelection}`)
     };
     return
 }
 
-// Playing prerequisites
-const playerSelection = prompt(`Choose either, Rock, Paper or Scissors to play!`)
-const caseInsensitivePart1 = playerSelection.toLowerCase();
-const caseInsensitivePart2 = caseInsensitivePart1.charAt(0).toUpperCase() + caseInsensitivePart1.slice(1);
-const playerSelectionCaseInsensitive = caseInsensitivePart2;
+// // Playing prerequisites
 const computerSelection = getComputerChoice();
 
-// The game without score keeping
-// playRound(playerSelectionCaseInsensitive, computerSelection);
+let playerPrompt = prompt(`Choose either, Rock, Paper or Scissors to play!`)
+const caseInsensitivePart1 = playerPrompt.toLowerCase();
+const caseInsensitivePart2 = caseInsensitivePart1.charAt(0).toUpperCase() + caseInsensitivePart1.slice(1);
+let playerSelection = caseInsensitivePart2;
 
-// The Game
+// The Game without score keeping
+playRound(playerSelection, computerSelection);
+
+
+// The Game with score keeping
 function game() {
     for (let i = 0; i < 5; i++) {
-        playRound((playerSelectionCaseInsensitive, computerSelection));
+        playRound((playerSelection, computerSelection));
         //alert winner or looser at the end
     }
 }
 
-game();
+
+
+
+
+
 
 /* NOTES
 
