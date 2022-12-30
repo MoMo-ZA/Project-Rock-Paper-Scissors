@@ -53,47 +53,53 @@ function getComputerChoice() {
 function playRound(playerSelectionCaseInsensitive, computerSelection) {
 
     if (playerSelectionCaseInsensitive == rock && computerSelection == scissors) {
-        console.log(`You Win! ${playerSelectionCaseInsensitive} beats ${computerSelection}`)
+        alert(`You Win! ${playerSelectionCaseInsensitive} beats ${computerSelection}`)
 
     } else if (playerSelectionCaseInsensitive == paper && computerSelection == rock) {
-        console.log(`You Win! ${playerSelectionCaseInsensitive} beats ${computerSelection}`)
+        alert(`You Win! ${playerSelectionCaseInsensitive} beats ${computerSelection}`)
 
     }
     else if (playerSelectionCaseInsensitive == scissors && computerSelection == paper) {
-        console.log(`You Win! ${playerSelectionCaseInsensitive} beats ${computerSelection}`)
+        alert(`You Win! ${playerSelectionCaseInsensitive} beats ${computerSelection}`)
 
     }
     else if (playerSelectionCaseInsensitive == computerSelection) {
-        console.log(`You Draw! ${computerSelection} and ${playerSelectionCaseInsensitive} are the same!`)
+        alert(`You Draw! ${computerSelection} and ${playerSelectionCaseInsensitive} are the same!`)
     }
     else {
-        console.log(`You Lose! ${computerSelection} beats ${playerSelectionCaseInsensitive}`)
-    }
+        alert(`You Lose! ${computerSelection} beats ${playerSelectionCaseInsensitive}`)
+    };
+    return
 }
 
+// Playing prerequisites
+const playerSelection = prompt(`Choose either, Rock, Paper or Scissors to play!`)
+const caseInsensitivePart1 = playerSelection.toLowerCase();
+const caseInsensitivePart2 = caseInsensitivePart1.charAt(0).toUpperCase() + caseInsensitivePart1.slice(1);
+const playerSelectionCaseInsensitive = caseInsensitivePart2;
+const computerSelection = getComputerChoice();
+
+// The game without score keeping
+// playRound(playerSelectionCaseInsensitive, computerSelection);
 
 // The Game
 function game() {
-    playRound()
+    for (let i = 0; i < 5; i++) {
+        playRound((playerSelectionCaseInsensitive, computerSelection));
+        //alert winner or looser at the end
+    }
 }
 
-
-// Playing the game
-const playerSelection = `rock`
-const caseInsensitivePart1 = playerSelection.toLowerCase();
-const caseInsensitivePart2 = caseInsensitivePart1.charAt(0).toUpperCase() + caseInsensitivePart1.slice(1);
-const playerSelectionCaseInsensitive = caseInsensitivePart2
-
-const computerSelection = getComputerChoice();
-console.log(playRound(playerSelectionCaseInsensitive, computerSelection));
-
-
-
+game();
 
 /* NOTES
 
-function caseInsensitivity(playerSelection) {
-    const caseInsensitivePart1 = playerSelection.toLowerCase();
-    const caseInsensitivePart2 = caseInsensitivePart1.charAt(0).toUpperCase() + caseInsensitivePart1.slice(1);
-}
+Keeping score
+    When the user inputs their option
+    My game receives it, generates an option for the pc, decides who wins, shows who wins by alert function then
+    Returns nothing 
+    -- i need to return the winner into a variable or loop to keep track
+    -- the loop will repeat the game 5 times - while my variable/loop above keeps track (i dont make sense here sorry lol)
+
+
 */
