@@ -58,54 +58,60 @@ function getComputerChoice() {
     return theChoice[random];
 }
 
+// Playing prerequisites
+const computerSelection = getComputerChoice();
+const playerPrompt = prompt(`Choose either, Rock, Paper or Scissors to play!`)
+
+//Case-Insenstivity Conversion
+const caseInsensitivePart1 = playerPrompt.toLowerCase();
+const caseInsensitivePart2 = caseInsensitivePart1.charAt(0).toUpperCase() + caseInsensitivePart1.slice(1);
+const playerSelection = caseInsensitivePart2;
 
 // Game's brains
 // CONSIDER switching below if-else-statement to a switch-statement 
 function playRound(playerSelection, computerSelection) {
 
     if (playerSelection == rock && computerSelection == scissors) {
-        alert(`You Win! ${playerSelection} beats ${computerSelection}`)
+        console.log(`You Win! ${playerSelection} beats ${computerSelection}`)
 
     } else if (playerSelection == paper && computerSelection == rock) {
-        alert(`You Win! ${playerSelection} beats ${computerSelection}`)
+        console.log(`You Win! ${playerSelection} beats ${computerSelection}`)
 
     }
     else if (playerSelection == scissors && computerSelection == paper) {
-        alert(`You Win! ${playerSelection} beats ${computerSelection}`)
+        console.log(`You Win! ${playerSelection} beats ${computerSelection}`)
 
     }
     else if (playerSelection == computerSelection) {
-        alert(`You Draw! ${computerSelection} and ${playerSelection} are the same!`)
+        console.log(`You Draw! ${computerSelection} and ${playerSelection} are the same!`)
     }
     else {
-        alert(`You Lose! ${computerSelection} beats ${playerSelection}`)
+        console.log(`You Lose! ${computerSelection} beats ${playerSelection}`)
     };
     return
 }
 
-// // Playing prerequisites
-const computerSelection = getComputerChoice();
-
-let playerPrompt = prompt(`Choose either, Rock, Paper or Scissors to play!`)
-const caseInsensitivePart1 = playerPrompt.toLowerCase();
-const caseInsensitivePart2 = caseInsensitivePart1.charAt(0).toUpperCase() + caseInsensitivePart1.slice(1);
-let playerSelection = caseInsensitivePart2;
-
-// The Game without score keeping
-playRound(playerSelection, computerSelection);
-
-
 // The Game with score keeping
 function game() {
-    for (let i = 0; i < 5; i++) {
-        playRound((playerSelection, computerSelection));
+
+    playRound(playerSelection, computerSelection);
+
+    for (let i = 1; i < 6; i++) {
+        // if computer wins more than player, console.log winner 
+        playRound(playerSelection, computerSelection);
+
+        console.log(`This is the ${i} game`)
         //alert winner or looser at the end
     }
 }
 
+game();
 
 
 
+
+// The Game without score keeping
+// playRound(playerSelection, computerSelection);
 
 
 
